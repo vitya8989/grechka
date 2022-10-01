@@ -16,14 +16,15 @@ const initSlider = () => {
     });
 }
 
-fetch('https://private-57b4e3-grchhtml.apiary-mock.com/slides').then(function(response) {
+fetch('https://grchhtml.docs.apiary.io/slides', {
+    headers: {
+        'Access-Control-Allow-Origin': '*'
+    },
+}).then(function(response) {
     if(response.ok) {
-        response.json().then(function(json) {
-            let data = json;
-            console.log(data);
-        });
+        console.log('ок');
     } else {
-        console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
+        console.log('Network request failed');
     }
 });
 
