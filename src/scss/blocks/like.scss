@@ -1,0 +1,110 @@
+.like__btns {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.like__btn {
+  display: none;
+  width: 72px;
+  height: 72px;
+  background: rgba(153, 153, 153, 0.2);
+  backdrop-filter: blur(2px);
+  transition: 0.3s;
+
+  @media ($desktop) {
+    width: 60px;
+    height: 60px;
+  }
+  @media ($mobile) {
+    width: 54px;
+    height: 54px;
+  }
+
+  svg {
+    width: 38px;
+    height: 36px;
+    @media ($desktop) {
+      width: 32px;
+      height: 31px;
+    }
+    @media ($mobile) {
+      width: 28px;
+      height: 27px;
+    }
+    path {
+      transition: 0.3s;
+    }
+  }
+
+  &:hover {
+    @media ($mobileMax) {
+      background: rgba(243, 106, 29, 0.1);
+      svg {
+        path {
+          fill: #F7AA7F;
+        }
+      }
+    }
+  }
+  &.active {
+    background: none;
+    backdrop-filter: none;
+    svg {
+      path {
+        fill: #F36A1D;
+      }
+    }
+    &:hover {
+      @media ($mobileMax) {
+        backdrop-filter: blur(2px);
+        background: rgba(243, 106, 29, 0.1);
+        svg {
+          path {
+            fill: #F36A1D;
+          }
+        }
+      }
+    }
+  }
+  &.disabled {
+    background: rgba(153, 153, 153, 0.2);
+    pointer-events: none;
+    svg {
+      path {
+        fill: #727272;
+      }
+    }
+  }
+  &.show {
+    display: block;
+  }
+}
+.like__count {
+  margin-top: 13px;
+  font-family: NoirPro-Italic, sans-serif;
+  color: #727272;
+  font-size: 3.2rem;
+  line-height: 1.1875;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+  text-align: center;
+  @media ($desktop) {
+    font-size: 2.6rem;
+    margin-top: 10px;
+  }
+  @media ($mobile) {
+    font-size: 2rem;
+    margin-top: 7px;
+    line-height: 1.15;
+  }
+}
+.like__value {
+  color: #F36A1D;
+  margin-left: 5px;
+  @media ($desktop) {
+    margin-left: 4px;
+  }
+  @media ($mobile) {
+    margin-left: 3px;
+  }
+}
