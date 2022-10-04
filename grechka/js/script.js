@@ -39,8 +39,38 @@ window.addEventListener('load', () => {
                    let sliderTitleArr = slider.querySelectorAll('.slider__title');
                    let sliderTextArr = slider.querySelectorAll('.slider__text');
                    let sliderLike = slider.querySelectorAll('.like__btn');
+                   if (window.innerWidth < 640) {
+                       if (sliderSwiper.slides[sliderSwiper.activeIndex + 1]) {
+                           sliderSwiper.slides[sliderSwiper.activeIndex + 1].querySelector('img').style.transform =
+                               "translate3d(-32%, 0, 0)";
+                       } else {
+                           if (sliderSwiper.slides[sliderSwiper.activeIndex - 1]) {
+                               sliderSwiper.slides[sliderSwiper.activeIndex - 1].querySelector('img').style.transform =
+                                   "translate3d(-26%, 0, 0)";
+                           }
+                       }
+                   }
+                   if (firstRun) {
+                       window.addEventListener('resize', () => {
+                           if (window.innerWidth < 640) {
+                               if (sliderSwiper.slides[sliderSwiper.activeIndex + 1]) {
+                                   sliderSwiper.slides[sliderSwiper.activeIndex + 1].querySelector('img').style.transform =
+                                       "translate3d(-32%, 0, 0)";
+                               } else {
+                                   if (sliderSwiper.slides[sliderSwiper.activeIndex - 1]) {
+                                       sliderSwiper.slides[sliderSwiper.activeIndex - 1].querySelector('img').style.transform =
+                                           "translate3d(-26%, 0, 0)";
+                                   }
+                               }
+                           }
+                       });
+                   }
                    sliderSwiper.on('slidePrevTransitionStart', () => {
                        if (window.innerWidth < 640) {
+                           if (sliderSwiper.slides[sliderSwiper.activeIndex - 1]) {
+                               sliderSwiper.slides[sliderSwiper.activeIndex - 1].querySelector('img').style.transform =
+                                   "translate3d(-26%, 0, 0)";
+                           }
                            sliderSwiper.slides[sliderSwiper.activeIndex].querySelector('img').style.transform =
                                "translate3d(0, 0, 0)";
                            if (sliderSwiper.slides[sliderSwiper.activeIndex + 1]) {
@@ -64,10 +94,6 @@ window.addEventListener('load', () => {
                            }
                        }
                    });
-                   if (window.innerWidth < 640) {
-                       sliderSwiper.slides[sliderSwiper.activeIndex + 1].querySelector('img').style.transform =
-                           "translate3d(-32%, 0, 0)";
-                   }
                    sliderSwiper.on('slideNextTransitionStart', () => {
                        if (window.innerWidth < 640) {
                            sliderSwiper.slides[sliderSwiper.activeIndex - 1].querySelector('img').style.transform =
