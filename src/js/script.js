@@ -131,7 +131,7 @@ window.addEventListener('load', () => {
                    });
                });
            } else {
-               console.log('Network request failed');
+               createSlide(null, sliderWrapper);
            }
        });
    }
